@@ -1,6 +1,6 @@
 module SimpleApm
   class Setting
-    ApmSettings YAML.load_file(Rails.root.join('config/simple_apm.yml'))[Rails.env]
+    ApmSettings = YAML.load_file('config/simple_apm.yml')[Rails.env]
     REDIS_URL = ApmSettings['redis_url'].presence || 'redis://localhost:6379/0'
     # nil , hiredis ...
     REDIS_DRIVER = ApmSettings['redis_driver']
